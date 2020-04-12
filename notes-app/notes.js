@@ -6,12 +6,26 @@ const getNotes = function () {
 
 const addNote = (title, body) => {
     const notes = loadNotes();
-    console.log(notes);
+
+    const titleArray = notes.map(note => note.title);
+
+    titleArray.includes(title) ? console.log('title taken') : 
+    notes.push({
+        title: title,
+        body: body
+    });
+
+    saveNotes(notes);
+}
+
+const saveNotes = (notes) => {
+    const dataJSON = JSON.stringify(notes);
+    fs.writeFileSync('notes.json', dataJSON)
 }
 
 const loadNotes = () => {
     try {
-        const dataBuffer = fs.readFileSync(notes.json);
+        const dataBuffer = fs.readFileSync('notes.json');
         const bufferString = dataBuffer.toString();
         return JSON.parse(bufferString);
     } catch (e) {
