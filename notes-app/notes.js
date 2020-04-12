@@ -1,4 +1,5 @@
 const fs = require('fs');
+const chalk = require('chalk');
 
 const getNotes = function () {
     return 'I got dem notes doe'
@@ -22,6 +23,8 @@ const removeNote = async (title) => {
     const notes = loadNotes();
     
     const filteredArray = notes.filter(note => note.title != title);
+
+    filteredArray.length === notes.length ? console.log(chalk.bgRedBright('did not remove note')) : console.log(chalk.bgGreenBright('removed note'));
 
     saveNotes(filteredArray);
 
