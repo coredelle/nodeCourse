@@ -61,7 +61,7 @@ const readNote = (title) => {
 
     const note = notes.find(note => note.title === title);
 
-    note ? console.log(chalk.inverse.magentaBright(note.title), note.body) : console.log('aint no notes bih');
+    note ? console.log(chalk.inverse.magentaBright(note.title), note.body) : console.log(chalk.bgRed('aint no notes bih'));
 
 }    
 
