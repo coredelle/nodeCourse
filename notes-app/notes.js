@@ -15,6 +15,7 @@ const addNote = (title, body) => {
         title: title,
         body: body
     });
+    console.log('new note added');
 
     saveNotes(notes);
 }
@@ -55,9 +56,19 @@ const listNotes = () => {
     notes.forEach(note => console.log(note.title))
 }
 
+const readNote = (title) => {
+    const notes = loadNotes();
+
+    const note = notes.find(note => note.title === title);
+
+    note ? console.log(chalk.inverse.magentaBright(note.title), note.body) : console.log('aint no notes bih');
+
+}    
+
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote
 }

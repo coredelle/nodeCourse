@@ -47,8 +47,8 @@ yargs.command({
 
 // create read command
 yargs.command({
-    command: 'read',
-    describe: 'read a new note',
+    command: 'list',
+    describe: 'list all notes',
     handler() {
         notes.listNotes();
     }
@@ -56,10 +56,17 @@ yargs.command({
 
 // create delete command
 yargs.command({
-    command: 'delete',
-    describe: 'delete a new note',
-    handler() {
-        console.log('deleting a new note')
+    command: 'read',
+    describe: 'read a note',
+    builder: {
+        title: {
+            describe: 'note title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.readNote(argv.title);
     }
 })
 
