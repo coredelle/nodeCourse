@@ -50,7 +50,7 @@ yargs.command({
     command: 'read',
     describe: 'read a new note',
     handler() {
-        console.log('reading a new note')
+        notes.listNotes();
     }
 })
 
