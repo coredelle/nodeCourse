@@ -6,5 +6,6 @@ request({url, json: true}, (err, resp) => {
     // console.log(resp.body.current);
     const degrees = resp.body.current.temperature;
     const rain = resp.body.current.precip;
-    console.log(`It is currently ${degrees} degrees out. There is ${rain}% chance of rain!`)
+    const forecast = resp.body.current.weather_descriptions[0].toLowerCase();
+    console.log(`It's ${forecast} and is currently ${degrees} degrees out. There is ${rain}% chance of rain!`)
 });
